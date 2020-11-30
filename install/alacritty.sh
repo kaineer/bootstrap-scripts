@@ -5,8 +5,10 @@ if [[ "$(uname -a | grep Ubuntu | wc -l)" == "1" ]]; then
   sudo apt-get update
   sudo apt install alacritty
 else
-  wget "https://github.com/alacritty/alacritty/releases/download/v0.3.3/Alacritty-v0.3.3-ubuntu_18_04_amd64.deb" -O "/tmp/Alacritty-v0.3.3-ubuntu_18_04_amd64.deb"
+  PKG="Alacritty-v0.3.3-ubuntu_18_04_amd64.deb"
 
-  dpkg -i /tmp/Alacritty-v0.3.3-ubuntu_18_04_amd64.deb
-  rm /tmp/Alacritty-v0.3.3-ubuntu_18_04_amd64.deb
+  mkdir -p ~/git/deb
+  wget "https://github.com/alacritty/alacritty/releases/download/v0.3.3/$PKG" -O "/tmp/$PKG"
+
+  dpkg -i ~/git/deb/$PKG
 fi
